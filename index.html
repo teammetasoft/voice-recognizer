@@ -6,42 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
-    <h1>Speak With ZEEQR</h1>
 
-    <div id ='interface'>
+    <div class="mainDiv">
+
+
+        <h1>Hello ZEEQR!</h1>
+
+        <div class="view" id='interface'>
+            <div class="form">
+                <div class="fake-input">
+                    <input type="text" id="input-search" placeholder="Speak..." />
+                    <button id="mic"><i class="fas fa-microphone"></i></button>
+                </div>
+            </div>
+
+            <div id='btn'>
+                <button id="start_button" onclick="startButton(event)" class='button'>
+                    <img class="micImage" alt="Start" id="start_img"
+                        src="//google.com/intl/en/chrome/assets/common/images/content/mic.gif">
+                </button>
+            </div>
+
+
+
+            <!-- <div id="results">
+        <span class="final" id='final_span'></span>
+        <span class="interim" id='interim_span'></span>
+    </div> -->
+
+        </div>
 
         <div id="info">
-          <p id="info_start">Click on the microphone icon to stop/begin speaking.</p>
-          <p id="info_speak_now" style="display:none">Speak now.</p>
-          <p id="info_no_speech" style="display:none">No speech was detected. You may need to adjust your <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>.</p>
-          <p id="info_no_microphone" style="display:none">No microphone was found. Ensure that a microphone is installed and that <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a> are configured correctly.</p>
-          <p id="info_allow" style="display:none">Click the "Allow" button above to enable your microphone.</p>
-          <p id="info_denied" style="display:none">Permission to use microphone was denied.</p>
-          <p id="info_blocked" style="display:none">Permission to use microphone is blocked. To change, go to chrome://settings/contentExceptions#media-stream</p>
-          <p id="info_upgrade" style="display:none">Web Speech API is not supported by this browser. Upgrade to <a href="//www.google.com/chrome">Chrome</a> version 25 or later.</p>
+            <p id="info_start">Click on the microphone icon to stop/begin speaking.</p>
+            <p id="info_speak_now" style="display:none">Speak now.</p>
+            <p id="info_no_speech" style="display:none">No speech was detected. You may need to adjust your <a
+                    href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>.
+            </p>
+            <p id="info_no_microphone" style="display:none">No microphone was found. Ensure that a microphone is
+                installed
+                and that <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone
+                    settings</a> are configured correctly.</p>
+            <p id="info_allow" style="display:none">Click the "Allow" button above to enable your microphone.</p>
+            <p id="info_denied" style="display:none">Permission to use microphone was denied.</p>
+            <p id="info_blocked" style="display:none">Permission to use microphone is blocked. To change, go to
+                chrome://settings/contentExceptions#media-stream</p>
+            <p id="info_upgrade" style="display:none">Web Speech API is not supported by this browser. Upgrade to <a
+                    href="//www.google.com/chrome">Chrome</a> version 25 or later.</p>
         </div>
-      
-        <div id='btn'>
-          <button id="start_button" onclick="startButton(event)" class='w3-button'>
-            <img alt="Start" id="start_img"
-                 src="//google.com/intl/en/chrome/assets/common/images/content/mic.gif">
-          </button>
-        </div>
-      
-        <div id="results">
-          <span class="final" id='final_span'></span>
-          <span class="interim" id='interim_span'></span>
-        </div>
-      
-      </div>
-      
-      
-      
-      
-      
+    </div>
     <script src="./script.js"></script>
 </body>
 

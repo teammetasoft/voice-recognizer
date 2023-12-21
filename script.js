@@ -66,12 +66,13 @@ function setUp() {
       if (window.getSelection) {
         window.getSelection().removeAllRanges();
         var range = document.createRange();
-        range.selectNode(document.getElementById("final_span"));
+        // range.selectNode(document.getElementById("final_span"));
         window.getSelection().addRange(range);
       }
     };
 
     recognition.onresult = function (event) {
+        var inputElement = document.getElementById('input-search');
       var interim_transcript = "";
       for (var i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
@@ -80,8 +81,10 @@ function setUp() {
           interim_transcript += event.results[i][0].transcript;
         }
       }
-      final_span.innerHTML = final_transcript;
-      interim_span.innerHTML = interim_transcript;
+    //   final_span.innerHTML = final_transcript;
+    //   interim_span.innerHTML = interim_transcript;
+      inputElement.placeholder =final_transcript 
+      
     };
   }
 }
@@ -115,8 +118,8 @@ function startButton(event) {
   recognition.lang = language;
   recognition.start();
   ignore_onend = false;
-  final_span.innerHTML = "";
-  interim_span.innerHTML = "";
+//   final_span.innerHTML = "";
+//   interim_span.innerHTML = "";
   start_img.src =
     "//google.com/intl/en/chrome/assets/common/images/content/mic-slash.gif";
   showInfo("info_allow");
