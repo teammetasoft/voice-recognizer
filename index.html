@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Speech-to-Text Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  <h1>Speech-to-Text Demo</h1>
-  <textarea id="audioContent" rows="4" cols="50" placeholder="Paste your audio content here"></textarea>
-  <button onclick="transcribeAudio()">Transcribe</button>
-  <div id="transcriptionResult"></div>
+    <h1>Speak With ZEEQR</h1>
 
-  <script src="https://cdn.jsdelivr.net/npm/@google-cloud/speech"></script>
-  <script>
-    async function transcribeAudio() {
-      const audioContent = document.getElementById('audioContent').value;
+    <div id ='interface'>
 
-      const client = new speech.SpeechClient();
-      const audio = {
-        content: audioContent,
-      };
-
-      const config = {
-        encoding: 'LINEAR16',
-        sampleRateHertz: 16000,
-        languageCode: 'en-US',
-      };
-
-      const request = {
-        audio: audio,
-        config: config,
-      };
-
-      try {
-        const [response] = await client.recognize(request);
-        const transcription = response.results
-          .map(result => result.alternatives[0].transcript)
-          .join('\n');
-        document.getElementById('transcriptionResult').innerText = transcription;
-      } catch (error) {
-        console.error('Error during transcription:', error.message);
-      }
-    }
-  </script>
+        <div id="info">
+          <p id="info_start">Click on the microphone icon to stop/begin speaking.</p>
+          <p id="info_speak_now" style="display:none">Speak now.</p>
+          <p id="info_no_speech" style="display:none">No speech was detected. You may need to adjust your <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>.</p>
+          <p id="info_no_microphone" style="display:none">No microphone was found. Ensure that a microphone is installed and that <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a> are configured correctly.</p>
+          <p id="info_allow" style="display:none">Click the "Allow" button above to enable your microphone.</p>
+          <p id="info_denied" style="display:none">Permission to use microphone was denied.</p>
+          <p id="info_blocked" style="display:none">Permission to use microphone is blocked. To change, go to chrome://settings/contentExceptions#media-stream</p>
+          <p id="info_upgrade" style="display:none">Web Speech API is not supported by this browser. Upgrade to <a href="//www.google.com/chrome">Chrome</a> version 25 or later.</p>
+        </div>
+      
+        <div id='btn'>
+          <button id="start_button" onclick="startButton(event)" class='w3-button'>
+            <img alt="Start" id="start_img"
+                 src="//google.com/intl/en/chrome/assets/common/images/content/mic.gif">
+          </button>
+        </div>
+      
+        <div id="results">
+          <span class="final" id='final_span'></span>
+          <span class="interim" id='interim_span'></span>
+        </div>
+      
+      </div>
+      
+      
+      
+      
+      
+    <script src="./script.js"></script>
 </body>
+
 </html>
